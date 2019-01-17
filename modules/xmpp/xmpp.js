@@ -18,6 +18,7 @@ import Listenable from '../util/Listenable';
 import Caps from './Caps';
 import GlobalOnErrorHandler from '../util/GlobalOnErrorHandler';
 import XMPPEvents from '../../service/xmpp/XMPPEvents';
+import focusAdmin from '../xmpp/strophe.focusAdmin';
 
 const logger = getLogger(__filename);
 
@@ -399,6 +400,30 @@ export default class XMPP extends Listenable {
 
         return this.connection.emuc.createRoom(roomjid, null, options);
     }
+
+    /**
+     * These 4 functions are specific to cloudversify/lib-jitsi-meet
+     * sendRemoteMuteAudio
+     * sendRemoteUnmuteAudio
+     * sendRemoteMuteVideo
+     * sendRemoteUnmuteVideo
+     */
+    sendRemoteMuteAudio = function (jid, success, failure) {
+        return this.connection.focusAdmin.sendRemoteMuteAudio(jid, success, failure);
+    }
+    
+    sendRemoteUnmuteAudio = function (jid, success, failure) {
+        return this.connection.focusAdmin.sendRemoteUnmuteAudio(jid, success, failure);
+    }
+    
+    sendRemoteMuteVideo = function (jid, success, failure) {
+        return this.connection.focusAdmin.sendRemoteMuteVideo(jid, success, failure);
+    }
+    
+    sendRemoteUnmuteVideo = function (jid, success, failure) {
+        return this.connection.focusAdmin.sendRemoteUnmuteVideo(jid, success, failure);
+    }
+
 
     /**
      * Returns the logs from strophe.jingle.
