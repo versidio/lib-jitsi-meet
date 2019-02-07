@@ -37,7 +37,8 @@ const config = {
                         // so that webpack may do tree shaking.
                         { modules: false }
                     ],
-                    '@babel/preset-flow'
+                    '@babel/preset-flow',
+                    '@babel/typescript'
                 ],
                 plugins: [
                     '@babel/plugin-transform-flow-strip-types',
@@ -67,11 +68,11 @@ const config = {
 module.exports = [
     Object.assign({}, config, {
         entry: {
-            'lib-jitsi-meet': './index.js'
+            'lib-jitsi-meet2': './index.js'
         },
         output: Object.assign({}, config.output, {
             library: 'JitsiMeetJS',
-            libraryTarget: 'umd'
+            libraryTarget: 'commonjs'
         })
     })
 ];
